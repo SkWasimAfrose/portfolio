@@ -3,7 +3,7 @@
 import { useState, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import Button from './Button';
-import { Mail, Phone, Linkedin, Instagram, Send, MessageCircle } from 'lucide-react';
+import { Mail, Phone, Linkedin, Instagram, Send, MessageCircle, MapPin, Github } from 'lucide-react';
 
 // Web3Forms Access Key
 const ACCESS_KEY = "fa006042-8a4b-4f8a-a89f-ddf17b16b7a3";
@@ -124,6 +124,18 @@ const Contact = () => {
 
                         <div className="flex items-start space-x-4">
                             <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary">
+                                <Github className="w-5 h-5" />
+                            </div>
+                            <div>
+                                <h3 className="font-bold mb-1">GitHub</h3>
+                                <a href="https://github.com/SkWasimAfrose" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-primary transition-colors">
+                                    @SkWasimAfrose
+                                </a>
+                            </div>
+                        </div>
+
+                        <div className="flex items-start space-x-4">
+                            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary">
                                 <Linkedin className="w-5 h-5" />
                             </div>
                             <div>
@@ -145,6 +157,19 @@ const Contact = () => {
                                 </a>
                             </div>
                         </div>
+
+                        {/* <div className="flex items-start space-x-4">
+                            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary">
+                                <MapPin className="w-5 h-5" />
+                            </div>
+                            <div>
+                                <h3 className="font-bold mb-1">Location</h3>
+                                <a href="https://maps.app.goo.gl/wx4mbwpoKKAgY7yWA" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-primary transition-colors">
+                                    WB, SURI, INDIA
+                                </a>
+                            </div>
+                        </div> */}
+
                     </motion.div>
 
                     {/* Contact Form */}
@@ -180,6 +205,7 @@ const Contact = () => {
                                     required
                                     className="w-full bg-surface border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
                                     placeholder="your@email.com"
+                                    suppressHydrationWarning
                                 />
                             </div>
                             <div>

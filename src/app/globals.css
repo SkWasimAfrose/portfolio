@@ -53,6 +53,10 @@ body {
   background-color: var(--color-background);
   color: var(--color-text-main);
   font-family: var(--font-sans);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-user-select: text;
+  user-select: text;
 }
 
 h1,
