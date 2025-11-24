@@ -16,6 +16,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://whoiswasim.vercel.app'),
   title: {
     default: "Sk Wasim Afrose (Shaan) | Full Stack Developer & UI/UX Designer",
     template: "%s | WorkWithWasim",
@@ -38,11 +39,14 @@ export const metadata: Metadata = {
     "Premium Portfolio",
     "Lead Generation",
   ],
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://workwithwasim.netlify.app",
-    siteName: "WorkWithWasim",
+    url: "https://whoiswasim.vercel.app",
+    siteName: "WhoIsWasim Portfolio",
     title: "Sk Wasim Afrose (Shaan) | Full Stack Developer & UI/UX Designer",
     description: "Premium portfolio of Sk Wasim Afrose, a passionate Full Stack Developer and UI/UX Designer.",
     images: [
