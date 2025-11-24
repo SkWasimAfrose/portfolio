@@ -3,13 +3,14 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { clsx } from 'clsx';
+import { Home, User, Sparkles, FolderGit2, Mail } from 'lucide-react';
 
 const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '#home', icon: Home },
+    { name: 'About', href: '#about', icon: User },
+    { name: 'Services', href: '#services', icon: Sparkles },
+    { name: 'Portfolio', href: '#portfolio', icon: FolderGit2 },
+    { name: 'Contact', href: '#contact', icon: Mail },
 ];
 
 const Navbar = () => {
@@ -56,33 +57,41 @@ const Navbar = () => {
             className="fixed bottom-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none"
         >
             <nav className={clsx(
-                "pointer-events-auto flex items-center gap-1 px-2 py-2 rounded-full border transition-all duration-300 backdrop-blur-md",
+                "pointer-events-auto flex items-center gap-1 px-2 py-2 rounded-full border transition-all duration-300 backdrop-blur-md w-fit max-w-[90vw]",
                 isScrolled
                     ? "bg-background/80 border-white/10 shadow-lg shadow-black/20"
                     : "bg-background/50 border-white/5"
             )}>
-                {navLinks.map((link) => (
-                    <a
-                        key={link.name}
-                        href={link.href}
-                        onClick={(e) => handleScrollTo(e, link.href)}
-                        className={clsx(
-                            "relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-300",
-                            activeSection === link.href.substring(1)
-                                ? "text-primary"
-                                : "text-text-muted hover:text-text-main"
-                        )}
-                    >
-                        {activeSection === link.href.substring(1) && (
-                            <motion.div
-                                layoutId="activeTab"
-                                className="absolute inset-0 bg-white/5 rounded-full"
-                                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                            />
-                        )}
-                        <span className="relative z-10">{link.name}</span>
-                    </a>
-                ))}
+                {navLinks.map((link) => {
+                    const Icon = link.icon;
+                    return (
+                        <a
+                            key={link.name}
+                            href={link.href}
+                            onClick={(e) => handleScrollTo(e, link.href)}
+                            className={clsx(
+                                "relative px-3 md:px-4 py-2 text-sm font-medium rounded-full transition-colors duration-300",
+                                activeSection === link.href.substring(1)
+                                    ? "text-primary"
+                                    : "text-text-muted hover:text-text-main"
+                            )}
+                        >
+                            {activeSection === link.href.substring(1) && (
+                                <motion.div
+                                    layoutId="activeTab"
+                                    className="absolute inset-0 bg-white/5 rounded-full"
+                                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                />
+                            )}
+                            {/* Icon - visible on mobile, hidden on desktop */}
+                            <span className="relative z-10 block md:hidden">
+                                <Icon className="w-5 h-5" />
+                            </span>
+                            {/* Text - hidden on mobile, visible on desktop */}
+                            <span className="relative z-10 hidden md:block">{link.name}</span>
+                        </a>
+                    );
+                })}
             </nav>
         </motion.div>
     );

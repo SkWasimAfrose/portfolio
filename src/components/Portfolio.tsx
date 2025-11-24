@@ -1,9 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Lock } from 'lucide-react';
-
-const projects = [1, 2, 3];
+import Link from 'next/link';
+import Image from 'next/image';
+import { ArrowRight } from 'lucide-react';
+import { projects } from '../app/data/projects';
 
 const Portfolio = () => {
     return (
@@ -21,24 +22,43 @@ const Portfolio = () => {
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {projects.map((item, index) => (
+                    {projects.map((project, index) => (
                         <motion.div
-                            key={item}
+                            key={project.id}
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.2 }}
-                            className="aspect-[4/3] rounded-2xl bg-surface border border-white/5 flex flex-col items-center justify-center group relative overflow-hidden"
+                            className="flex flex-col h-full"
                         >
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+                            {/* Image Container */}
+                            <Link href={`/portfolio/${project.id}`} className="block group">
+                                <div className="relative aspect-video rounded-xl overflow-hidden border border-white/10 bg-[#1E1E1E] mb-4">
+                                    <Image
+                                        src={project.image}
+                                        alt={project.title}
+                                        fill
+                                        className="object-cover transition-transform duration-500 group-hover:scale-105 group-hover:brightness-110"
+                                    />
+                                </div>
+                            </Link>
 
-                            <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 z-20">
-                                <Lock className="w-6 h-6 text-text-muted group-hover:text-primary transition-colors" />
+                            {/* Details Container */}
+                            <div className="flex flex-col flex-grow">
+                                <h3 className="text-xl font-bold text-yellow-400 mb-2">
+                                    {project.title}
+                                </h3>
+                                <p className="text-gray-400 text-sm mb-4 line-clamp-2 flex-grow">
+                                    {project.description}
+                                </p>
+                                <Link
+                                    href={`/portfolio/${project.id}`}
+                                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10 text-white hover:bg-white/10 hover:border-yellow-400/50 transition-all duration-300 font-medium group shadow-lg hover:shadow-yellow-400/20"
+                                >
+                                    <span>View Case Study</span>
+                                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                                </Link>
                             </div>
-
-                            <h3 className="text-xl font-bold text-text-muted group-hover:text-white transition-colors z-20">
-                                Project Coming Soon
-                            </h3>
                         </motion.div>
                     ))}
                 </div>

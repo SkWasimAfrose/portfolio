@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Button from './Button';
 import { ArrowRight } from 'lucide-react';
 import Magnetic from './Magnetic';
@@ -24,8 +25,14 @@ const Hero = () => {
                 <Magnetic className="inline-block">
                     <div className="relative w-32 h-32 mx-auto mb-8 rounded-full border-2 border-primary/30 p-1">
                         <div className="w-full h-full rounded-full bg-surface flex items-center justify-center overflow-hidden">
-                            {/* Placeholder for Headshot */}
-                            <span className="text-text-muted text-xs">Headshot</span>
+                            <Image
+                                src="/assets/images/headshot.png"
+                                alt="Sk Wasim Afrose"
+                                width={128}
+                                height={128}
+                                className="w-full h-full object-cover rounded-full"
+                                priority
+                            />
                         </div>
                     </div>
                 </Magnetic>
@@ -34,7 +41,7 @@ const Hero = () => {
                     Full Stack Developer | UI/UX Designer
                 </h2>
 
-                <h1 className="text-5xl md:text-7xl font-bold text-text-main leading-tight">
+                <h1 className="text-3xl md:text-7xl font-bold text-text-main leading-tight whitespace-nowrap w-full">
                     Sk Wasim Afrose
                 </h1>
 
