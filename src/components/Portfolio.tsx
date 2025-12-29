@@ -8,7 +8,7 @@ import { projects } from "../app/data/projects";
 
 // Swiper for carousel
 import { Swiper, SwiperSlide } from "swiper/react";
-import Autoplay from "swiper/modules/autoplay.mjs";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
 const Portfolio = () => {
